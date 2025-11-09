@@ -1,0 +1,29 @@
+.heading {
+  font-size: 32px;
+  text-align: center;
+  color: #fff;
+}
+
+.base-input {
+  width: 472px;
+  height: 79px;
+  border-radius: 15px;
+  border: 1px solid #000;
+}
+
+.base-button {
+  width: 300px;
+  height: 80px;
+  border-radius: 40px;
+  border: none;
+  background: #356DFF;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.base-button:hover {
+  background: #2a5ee1;
+  cursor: pointer;
+  transition: 200ms ease-in-out;
+}
