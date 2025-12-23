@@ -21,6 +21,10 @@ const Registration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const navigateToLogin = () => {
+    navigate("/login")
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -96,6 +100,7 @@ const Registration = () => {
           <button className="base-button" type="submit">
             Sign in
           </button>
+          <p className="login-reference">Have an Account? <a onClick={navigateToLogin}>login</a></p>
           {message && <p className="response-message">{message}</p>}
         </div>
       </form>

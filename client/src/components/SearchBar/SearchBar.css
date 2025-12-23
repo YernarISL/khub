@@ -1,0 +1,11 @@
+.search-bar-container {
+    display: flex;
+}
+
+.search-bar {
+    width: 400px;
+    height: 45px;
+    border-radius: 20px;
+    border: 1px solid #cfcfcf;;
+    background: #f6f6f6;
+}

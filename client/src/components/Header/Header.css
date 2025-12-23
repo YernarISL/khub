@@ -1,0 +1,56 @@
+.header-wrapper {
+    background-color: #fff;
+    padding: 24px 72px;
+    outline: 1px solid #e5e5e5;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-nav-bar {
+    display: flex;
+    gap: 32px;
+}
+
+.header-nav-bar * {
+    color: #000;
+}
+
+.header-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-in-header {
+    max-width: 250px;
+}
+
+.header-sandbox-link {
+    background-color: #28a745;
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+.header-sandbox-link:hover {
+    background-color: #238a3b;
+    color: #fff;
+}
+
+.header-uploadPdf-link {
+    background-color: #007bff;
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+.header-uploadPdf-link:hover {
+    background-color: #036cdc;
+    color: #fff;
+}

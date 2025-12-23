@@ -8,7 +8,7 @@
 
 .login-container {
     width: 600px;
-    height: 800px;
+    height: 700px;
     border-radius: 15px;
     border: 1px solid #D9D9D9;
     background: #FFF;
@@ -18,3 +18,4 @@
     align-items: center;
     gap: 24px;
 }
+

@@ -1,7 +1,9 @@
-.home-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+.home-page-wrapper {
+  background-color: #f6f6f6;
+}
+
+.home-page-container {
+    margin: 0 72px; 
 }
 
 .hero-section {
