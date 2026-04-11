@@ -1,7 +1,7 @@
 import { host } from "./index";
 
 export const getAllMaterials = async () => {
-  const response = await host.get("/materials", { withCredentials: true });
+  const response = await host.get("/all-materials", { withCredentials: true });
   return response.data;
 };
 
@@ -50,4 +50,11 @@ export const createMaterial = async (materialData) => {
     
     throw error;
   }
+};
+
+export const fetchMaterialSummary = async (id) => {
+    const { data } = await host.get(`/materials/${id}/summary`, {
+      withCredentials: true,
+    });
+    return data.summary;
 };

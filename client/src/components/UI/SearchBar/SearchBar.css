@@ -1,0 +1,32 @@
+.search-bar-container {
+    position: relative;
+    display: flex;
+}
+
+.search-bar {
+    width: 400px;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    background: #f6f6f6;
+    padding-left: 16px;
+}
+
+.search-bar:focus {
+    outline: none;
+    border: 1px solid #d9d9d9;
+}
+
+.search-button {
+    position: absolute;
+    right: 0;
+    top: 13px;
+    padding-right: 16px;
+    background: none;
+    border: none;
+
+}
+
+.search-button:hover {
+    cursor: pointer;
+}

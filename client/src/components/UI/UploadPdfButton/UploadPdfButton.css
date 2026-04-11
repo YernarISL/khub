@@ -1,0 +1,16 @@
+.upload-pdf-button {
+    max-width: 180px;
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    background-color: #356DFF;
+    opacity: 90%;
+}
+
+.upload-pdf-button:hover {
+    background-color: #245ff4;
+    cursor: pointer;
+}

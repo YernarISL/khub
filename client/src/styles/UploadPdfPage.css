@@ -8,7 +8,7 @@
   background: white;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .upload-form {
@@ -114,4 +114,24 @@
 
 .upload-info li {
   margin-bottom: 8px;
+}
+
+.btn-submit-pdf {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background: #705df2;
+  color: white;
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background: #acacad;
+  color: white;
 }

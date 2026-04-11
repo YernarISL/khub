@@ -1,5 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import MaterialCategory from '../MaterialCategory/MaterialCategory';
+import EditButton from '../UI/EditButton/EditButton';
+import DownloadButton from '../UI/DownloadButton/DownloadButton';
 import "./MaterialCard.css";
 
 const MaterialCard = ({ material }) => {
@@ -9,16 +12,21 @@ const MaterialCard = ({ material }) => {
   };
 
   return (
-    <div onClick={handleClick} style={{ 
-      border: '1px solid #ccc', 
-      padding: '16px', 
-      marginBottom: '16px',
-      cursor: 'pointer'
-    }}>
-      <h3>{material.title}</h3>
-      <p>{material.description}</p>
-      <p>{material.user.firstName}</p>
-      <small>{material.materialType}</small>
+    <div className="material-card-container" onClick={handleClick}>
+      <h3 className="material-card-title">{material.title}</h3>
+      <div className="material-card-secondary-container">
+        <MaterialCategory />
+        <span>November 2025</span>
+        <span>Reads: 120</span>
+      </div>
+      <div className="material-card-short-details">
+        <p>Pages: 128</p>
+        <p className="material-card-categories">Category: Digital Marketing, Marketing, Sociology</p>
+      </div>
+      <div className="material-card-buttons">
+        <EditButton/>
+        <DownloadButton/>
+      </div>
     </div>
   );
 };

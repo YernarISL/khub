@@ -1,0 +1,15 @@
+.open-sandbox-button {
+    max-width: 180px;
+    padding: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    background-color: #43C97C;
+}
+
+.open-sandbox-button:hover {
+    background-color: #15b761;
+    cursor: pointer;
+}

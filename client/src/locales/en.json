@@ -1,0 +1,34 @@
+{
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Register",
+  "search": "Search",
+  "profile": "Profile",
+  "adminPanel": "Admin panel",
+  "editor": "Editor",
+  "save": "Save",
+  "language": "Language",
+  "home": {
+    "greeting": "Good evening",
+    "subtitle": "Ready to continue your research?",
+    "continueWorking": "Continue working",
+    "lastOpened": "Last opened",
+    "editing": "Edit",
+    "startNew": "Start something new",
+    "uploadPdf": "Upload PDF",
+    "openSandbox": "Open sandbox",
+    "yourMaterials": "Your materials",
+    "recentlyAdded": "Recently added",
+    "viewAll": "View all",
+    "edit": "Edit",
+    "download": "Download",
+    "reads": "Reads",
+    "page": "Page",
+    "category": "Category"
+  },
+  "header": {
+    "myWorks": "My works",
+    "sandbox": "Sandbox",
+    "searchPlaceholder": "Search for researches, people, journals etc..."
+  }
+}

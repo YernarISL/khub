@@ -4,8 +4,15 @@ const bcrypt = require("bcrypt");
 class RegistrationController {
   async register(req, res) {
     try {
-      const user_id = req.user_id;
       const { email, password, username, firstName, secondName } = req.body;
+
+      if (!email || !password || !username) {
+        return res.status(400).json({ message: "Email, password and username are required" });
+      }
+
+      if (password.length < 6) {
+        return res.status(400).json({ message: "Password must be at least 6 characters long" });
+      }
 
       // Check if user already exists
       const existingUser = await User.findOne({ where: { email: email } });
@@ -19,7 +26,6 @@ class RegistrationController {
 
       // Create new user
       const newUser = await User.create({
-        user_id: user_id,
         firstName,
         secondName,
         username,
@@ -27,13 +33,15 @@ class RegistrationController {
         password: hashedPassword,
       });
 
-      return res.json({
+      const { userPassword, ...safeUser } = newUser.dataValues
+
+      return res.status(201).json({
         message: "User successfully registered",
-        data: newUser,
+        data: safeUser,
       });
     } catch (error) {
       console.error("Registration error:", error);
-      return res.json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error" });
     }
   }
 }

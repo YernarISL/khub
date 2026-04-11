@@ -51,6 +51,10 @@ class LoginController {
       id: user.id,
       email: user.email,
       username: user.username,
+      firstName: user.firstName,
+      secondName: user.secondName,
+      role: user.role,
+      profileImage: user.profileImage,
     });
   }
 }

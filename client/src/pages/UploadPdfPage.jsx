@@ -142,7 +142,7 @@ const handleFileChange = (e) => {
             <button
               type="button"
               onClick={() => navigate('/home')}
-              className="btn btn-secondary"
+              className="btn-cancel"
               disabled={isUploading}
             >
               Отмена
@@ -150,9 +150,9 @@ const handleFileChange = (e) => {
             <button
               type="submit"
               disabled={isUploading || !pdfFile}
-              className="btn btn-primary"
+              className="btn-submit-pdf"
             >
-              {isUploading ? 'Загрузка и конвертация...' : '📤 Загрузить PDF'}
+              {isUploading ? 'Загрузка и конвертация...' : 'Загрузить PDF'}
             </button>
           </div>
         </form>

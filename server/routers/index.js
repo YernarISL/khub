@@ -1,19 +1,28 @@
 const Router = require('express')
+const multer = require('multer');
 
 const router = new Router()
 const registrationRouter = require('./registrationRoute')
 const loginRouter = require('./loginRoute')
+const adminRouter = require('./adminRoute')
+const avatarRouter = require('./avatarRoute');
+const AIRouter = require('./AISummarizeRoute');
+
 const searchController = require('../controllers/SearchController');
-const userController = require('../controllers/UserController');
 const materialController = require('../controllers/MaterialController');
-const authMiddleware = require('../middleware/authMiddleware'); 
 const LoginController = require('../controllers/LoginController');
 
-const multer = require('multer');
+const authMiddleware = require('../middleware/authMiddleware'); 
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 router.use('/registration', registrationRouter)
+
 router.use('/login', loginRouter)
+
+router.use('/admin', adminRouter)
+
+router.use('/profile', avatarRouter)
 
 router.get('/searchUsers', searchController.getAllUsers)
 
@@ -47,5 +56,9 @@ router.get("/user-all-materials", authMiddleware, materialController.getUserMate
 router.get("/materials/:id", authMiddleware, materialController.getMaterialById);
 
 router.post("/material/upload-pdf", authMiddleware, upload.single("pdfFile"), materialController.createFromPdf);
+
+router.get("/search", authMiddleware, searchController.search);
+
+router.use("/", authMiddleware, AIRouter);
 
 module.exports = router;

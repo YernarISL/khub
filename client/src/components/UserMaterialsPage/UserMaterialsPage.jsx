@@ -22,7 +22,7 @@ const UserMaterialsPage = () => {
   };
 
   return (
-    <div className="">
+    <div className="user-materials-list-container">
       {materials.map((material) => (
         <MaterialCard
           key={material.id}

@@ -1,9 +1,32 @@
 .home-page-wrapper {
-  background-color: #f6f6f6;
+  background-color: #F5F7FB;
 }
 
 .home-page-container {
-    margin: 0 72px; 
+    margin: 0 100px; 
+}
+
+.home-page-first-heading {
+    margin: 72px 0 24px;
+}
+
+.home-page-first-subheading {
+    margin-bottom: 16px;
+}
+
+.home-page-second-subheading {
+    margin-bottom: 16px;
+}
+
+.home-page-third-subheading {
+    margin-bottom: 16px;
+}
+
+.home-page-hero-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 64px;
 }
 
 .hero-section {
@@ -43,6 +66,10 @@
 
 .card:hover {
     transform: translateY(-5px);
+}
+
+.home-page-footer {
+    padding-bottom: 64px;
 }
 
 @media (max-width: 768px) {

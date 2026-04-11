@@ -1,0 +1,27 @@
+.material-card-container {
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 24px 32px 32px;
+}
+
+.material-card-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.material-card-buttons {
+    display: flex;
+    gap: 32px;
+}
+
+.material-card-secondary-container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin: 32px 0 24px;
+}
+
+.material-card-categories {
+    margin: 16px 0 48px;
+}

@@ -54,3 +54,58 @@
     background-color: #036cdc;
     color: #fff;
 }
+
+.header-profile-username {
+  color: #000;
+}
+
+.lang-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.globe-icon {
+  position: absolute;
+  left: 10px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none; 
+  fill: #555;
+}
+
+.modern-select {
+  /* Убираем стандартный вид браузера */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Стилизация */
+  padding: 8px 32px 8px 24px; /* Большой отступ слева для иконки */
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px; /* Тот самый Modern круглый вид */
+  background-color: white;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* Эффект при наведении */
+.modern-select:hover {
+  border-color: #3b82f6; /* Цвет рамки при ховере */
+  background-color: #f9fafb;
+}
+
+/* Добавляем свою маленькую стрелочку справа (опционально) */
+.lang-select-wrapper::after {
+  content: "▼";
+  font-size: 10px;
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: #9ca3af;
+}

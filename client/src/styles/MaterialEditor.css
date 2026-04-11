@@ -1,0 +1,27 @@
+.material-editor-page-wrapper {
+    background-color: #F5F7FB;
+    height: max-content;
+}
+
+.material-editor-container {
+    max-width: 1200px;
+    background-color: #fff;
+    margin: 30px auto 0;
+    padding: 20px;
+    border: 1px solid #dfdfdf;
+    border-radius: 8px;
+}
+
+.button-group button { 
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px; 
+    cursor: pointer; 
+    background: white; 
+    border: 1px solid #ddd; 
+    border-radius: 4px;
+    padding: 0 10px;
+}

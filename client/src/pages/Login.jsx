@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import { login } from "../services/userService";
-import { useAuthStore } from "../store";
+import { useAuthStore } from "../app/store";
+import "../styles/Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ const Login = () => {
   const setAuth = useAuthStore((state) => state.setAuth);
 
   const navigateToReg = () => {
-    navigate("/");
+    navigate("/registration");
   };
 
   const handleChange = (e) => {
@@ -36,13 +36,18 @@ const Login = () => {
   };
 
   return (
-    <div className="login-body">
-      <h1 className="heading">Welcome to KHub</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="login-container">
-          <h2>Log in</h2>
+    <div className="login-page-wrapper">
+      <img
+        src="/src/assets/registration_background.png"
+        alt="login background image"
+        className="login-background-image"
+      />
+      <div className="login-page-container">
+        <form onSubmit={handleSubmit} className="login-form-container">
+          <h2 className="login-page-heading">Log in</h2>
           <input
-            className="base-input"
+            className="auth-input"
+            id="login-username-input-field"
             type="text"
             name="username"
             placeholder="Username"
@@ -51,7 +56,8 @@ const Login = () => {
             required
           />
           <input
-            className="base-input"
+            className="auth-input"
+            id="login-password-input-field"
             type="password"
             name="password"
             placeholder="Password"
@@ -59,12 +65,14 @@ const Login = () => {
             onChange={handleChange}
             required
           />
-          <button className="base-button" type="submit">Log in</button>
+          <button className="login-button" type="submit">
+            Log in
+          </button>
           <p className="login-reference">
             Don't an Account? <a onClick={navigateToReg}>Register</a>
           </p>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
