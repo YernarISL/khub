@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const { User, Material } = require("../models/models");
+import { Op } from "sequelize";
+import { User, Material } from "../models/models.js";
 
 class SearchController {
   async getAllUsers(req, res) {
@@ -36,4 +36,4 @@ class SearchController {
   }
 }
 
-module.exports = new SearchController();
+export default new SearchController();

@@ -1,5 +1,5 @@
-const bcrypt = require("bcrypt");
-const { User } = require("../models/models");
+import bcrypt from "bcrypt";
+import { User } from "../models/models.js";
 
 class LoginController {
   async login(req, res) {
@@ -59,4 +59,4 @@ class LoginController {
   }
 }
 
-module.exports = new LoginController();
+export default new LoginController();

@@ -1,9 +1,9 @@
-const Router = require("express");
-const router = new Router();
-const avatarController = require("../controllers/UploadAvatarController");
-const authMiddleware = require("../middleware/authMiddleware");
-const { User } = require("../models/models");
-const uploadAvatar = avatarController.uploadAvatar;
+import express from "express";
+import { uploadAvatar } from "../controllers/UploadAvatarController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
+import { User } from "../models/models.js";
+
+const router = express.Router();
 
 router.post(
   "/avatar",
@@ -38,4 +38,4 @@ router.post(
   }
 );
 
-module.exports = router;
+export default router;

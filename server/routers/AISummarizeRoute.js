@@ -1,8 +1,8 @@
+import express from "express";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { Material } from "../models/models.js";
 
-const Router = require("express");
-const router = new Router();
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const { Material } = require("../models/models");
+const router = express.Router();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -33,4 +33,4 @@ router.get("/materials/:id/summary", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

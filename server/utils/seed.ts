@@ -27,4 +27,4 @@ const seedStudentsData = async () => {
     await client.end();
 }
 
-seedStudentsData().catch(console.error);
+

@@ -1,18 +1,16 @@
-const Router = require('express')
-const multer = require('multer');
+import express from 'express';
+import multer from 'multer';
+import registrationRouter from './registrationRoute.js';
+import loginRouter from './loginRoute.js';
+import adminRouter from './adminRoute.js';
+import avatarRouter from './avatarRoute.js';
+import AIRouter from './AISummarizeRoute.js';
+import searchController from '../controllers/SearchController.js';
+import materialController from '../controllers/MaterialController.js';
+import LoginController from '../controllers/LoginController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
-const router = new Router()
-const registrationRouter = require('./registrationRoute')
-const loginRouter = require('./loginRoute')
-const adminRouter = require('./adminRoute')
-const avatarRouter = require('./avatarRoute');
-const AIRouter = require('./AISummarizeRoute');
-
-const searchController = require('../controllers/SearchController');
-const materialController = require('../controllers/MaterialController');
-const LoginController = require('../controllers/LoginController');
-
-const authMiddleware = require('../middleware/authMiddleware'); 
+const router = express.Router();
 
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -61,4 +59,4 @@ router.get("/search", authMiddleware, searchController.search);
 
 router.use("/", authMiddleware, AIRouter);
 
-module.exports = router;
+export default router;

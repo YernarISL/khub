@@ -3,6 +3,6 @@ const checkAdmin = (req, res, next) => {
     return res.status(403).json({ message: "Forbidden"});
   }
   next();
-}
+};
 
-module.exports = checkAdmin;
+export default checkAdmin;

@@ -1,4 +1,4 @@
-const { User, Material } = require("../models/models");
+import { User, Material } from "../models/models.js";
 
 class AdminController {
     async getUsers(req, res) {
@@ -49,4 +49,4 @@ class AdminController {
     }
 }
 
-module.exports = new AdminController();
+export default new AdminController();

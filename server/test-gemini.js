@@ -1,4 +1,4 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // ВСТАВЬТЕ КЛЮЧ ПРЯМО СЮДА ДЛЯ ТЕСТА
 const genAI = new GoogleGenerativeAI("AIzaSyCcURqwqTX309RD1vnEkhc_Z4VgL8AGvNs");

@@ -1,5 +1,5 @@
-const pdfParse = require("pdf-parse-new");
-const { Material, User } = require("../models/models");
+import pdfParse from "pdf-parse-new";
+import { Material, User } from "../models/models.js";
 
 class MaterialController {
   async createMaterial(req, res) {
@@ -80,17 +80,7 @@ class MaterialController {
         return res.status(400).json({ message: "Файл не получен" });
       }
 
-      // Определяем функцию парсинга
-      let parseFunction;
-      if (typeof pdfParse === "function") {
-        parseFunction = pdfParse;
-      } else if (pdfParse && typeof pdfParse.default === "function") {
-        parseFunction = pdfParse.default;
-      } else {
-        // Если всё еще не функция, пробуем принудительный импорт конкретного файла
-        parseFunction = require("pdf-parse/lib/pdf-parse.js");
-      }
-
+      const parseFunction = typeof pdfParse === "function" ? pdfParse : pdfParse.default;
       const pdfData = await parseFunction(req.file.buffer);
 
       const material = await Material.create({
@@ -113,4 +103,4 @@ class MaterialController {
   }
 }
 
-module.exports = new MaterialController();
+export default new MaterialController();

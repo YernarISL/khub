@@ -1,11 +1,17 @@
-require('dotenv').config()
-const sequelize = require('./db')
-const cors = require('cors')
-const router = require('./routers/index')
-const express = require('express')
-const session = require('express-session');
-const errorHandler = require('./middleware/ErrorHandlingMiddleware')
-const path = require("path");
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import sequelize from './db.js';
+import cors from 'cors';
+import router from './routers/index.js';
+import express from 'express';
+import session from 'express-session';
+import errorHandler from './middleware/ErrorHandlingMiddleware.js';
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 5000
 
@@ -36,7 +42,6 @@ app.use(errorHandler)
 const startServer = async () => { 
     try {
         await sequelize.authenticate()
-        await sequelize.sync({ alter: true })
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
     } catch (e) {
         console.log(e);

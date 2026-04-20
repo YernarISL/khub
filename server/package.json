@@ -5,7 +5,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "sequelize-cli db:migrate --config config/config.js --migrations-path migrations",
+    "migrate:undo": "sequelize-cli db:migrate:undo --config config/config.js --migrations-path migrations",
+    "migrate:status": "sequelize-cli db:migrate:status --config config/config.js --migrations-path migrations",
+    "migrate:create": "sequelize-cli migration:generate --migrations-path migrations --name"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +34,7 @@
   "devDependencies": {
     "@types/pg": "^8.20.0",
     "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.5",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"
   }

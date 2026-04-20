@@ -1,4 +1,4 @@
-const { User } = require('../models/models');
+import { User } from '../models/models.js';
 
 const authMiddleware = async (req, res, next) => {
     if (!req.session.userId) {
@@ -17,4 +17,4 @@ const authMiddleware = async (req, res, next) => {
     next();
 }
 
-module.exports = authMiddleware;
+export default authMiddleware;

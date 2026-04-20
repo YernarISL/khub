@@ -1,5 +1,5 @@
-const { User } = require("../models/models");
-const bcrypt = require("bcrypt");
+import { User } from "../models/models.js";
+import bcrypt from "bcrypt";
 
 class RegistrationController {
   async register(req, res) {
@@ -46,4 +46,4 @@ class RegistrationController {
   }
 }
 
-module.exports = new RegistrationController();
+export default new RegistrationController();

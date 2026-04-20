@@ -1,4 +1,4 @@
-const { User } = require("../models/models");
+import { User } from "../models/models.js";
 
 class UserController {
   async getUserAuthInfo(req, res) {
@@ -16,7 +16,4 @@ class UserController {
     });
   }
 }
-
-
-
-module.exports = getUserAuthInfo;
+export default new UserController();

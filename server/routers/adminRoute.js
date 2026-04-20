@@ -1,8 +1,9 @@
-const Router = require('express');
-const router = new Router();
-const adminController = require('../controllers/AdminController');
-const checkAdmin = require('../middleware/checkAdmin');
-const authMiddleware = require('../middleware/authMiddleware'); 
+import express from 'express';
+import adminController from '../controllers/AdminController.js';
+import checkAdmin from '../middleware/checkAdmin.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+
+const router = express.Router();
 
 router.get("/users", authMiddleware, checkAdmin, adminController.getUsers);
 
@@ -10,4 +11,4 @@ router.get("/materials", authMiddleware, checkAdmin, adminController.getMaterial
 
 router.delete("/materials/:id", authMiddleware, checkAdmin, adminController.deleteMaterial);
 
-module.exports = router;
+export default router;
