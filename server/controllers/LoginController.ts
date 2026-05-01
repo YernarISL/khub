@@ -1,10 +1,14 @@
+import type { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { User } from "../models/models.js";
 
 class LoginController {
-  async login(req, res) {
+  async login(req: Request, res: Response) {
     try {
-      const { username, password } = req.body;
+      const { username, password } = req.body as {
+        username?: string;
+        password?: string;
+      };
 
       if (!username || !password) {
         return res
@@ -13,12 +17,13 @@ class LoginController {
       }
 
       const user = await User.findOne({
-        where: { username: username },
+        where: { username },
       });
 
       if (!user) {
         return res.status(401).json({ message: "Invalid credentials" });
       }
+
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
         if (!req.session) {
@@ -30,17 +35,16 @@ class LoginController {
 
         console.log("Password is correct");
         return res.status(200).json({ message: "Login successful" });
-      } else {
-        return res
-          .status(401)
-          .json({ message: "Invalid username or password" });
       }
+
+      return res.status(401).json({ message: "Invalid username or password" });
     } catch (error) {
       console.error("Login error: ", error);
       return res.status(401).json({ message: "Internal server error" });
     }
   }
-  async getUserAuthInfo(req, res) {
+
+  async getUserAuthInfo(req: Request, res: Response) {
     const user = await User.findByPk(req.session.userId);
 
     if (!user) {

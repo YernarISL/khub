@@ -1,15 +1,23 @@
+import type { Request, Response } from "express";
 import pdfParse from "pdf-parse-new";
 import { Material, User } from "../models/models.js";
 
 class MaterialController {
-  async createMaterial(req, res) {
+  async createMaterial(req: Request, res: Response) {
     try {
-      const { title, description, materialType, content } = req.body;
+      const { title, description, materialType, content } = req.body as {
+        title?: string;
+        description?: string;
+        materialType?: string;
+        content?: unknown;
+      };
+
       console.log("Body:", req.body);
       console.log("Session:", req.session);
       if (!title || !description || !materialType || !content) {
         return res.status(400).json({ message: "Not all fields are filled" });
       }
+
       const material = await Material.create({
         title,
         description,
@@ -25,12 +33,12 @@ class MaterialController {
 
       return res.status(500).json({
         message: "Internal Server Error",
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
       });
     }
   }
 
-  async getUserMaterials(req, res) {
+  async getUserMaterials(req: Request, res: Response) {
     try {
       const materials = await Material.findAll({
         where: { userId: req.session.userId },
@@ -42,20 +50,20 @@ class MaterialController {
       console.error("Error fetching materials:", error);
       return res.status(500).json({
         message: "Internal Server Error",
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
       });
     }
   }
 
-  async getMaterialById(req, res) {
+  async getMaterialById(req: Request, res: Response) {
     try {
       const { id } = req.params;
 
       const material = await Material.findByPk(id, {
         include: {
-            model: User,
-            attributes: ["id", "firstName", "secondName", "username"],
-        }
+          model: User,
+          attributes: ["id", "firstName", "secondName", "username"],
+        },
       });
 
       if (!material) {
@@ -70,9 +78,8 @@ class MaterialController {
     }
   }
 
-  async createFromPdf(req, res) {
+  async createFromPdf(req: Request, res: Response) {
     try {
-      // ДИАГНОСТИКА: Посмотрим, что в переменной
       console.log("Тип pdfParse:", typeof pdfParse);
       console.log("Содержимое pdfParse:", pdfParse);
 
@@ -80,12 +87,12 @@ class MaterialController {
         return res.status(400).json({ message: "Файл не получен" });
       }
 
-      const parseFunction = typeof pdfParse === "function" ? pdfParse : pdfParse.default;
+      const parseFunction = typeof pdfParse === "function" ? pdfParse : (pdfParse as any).default;
       const pdfData = await parseFunction(req.file.buffer);
 
       const material = await Material.create({
-        title: req.body.title || "Без названия",
-        description: req.body.description || "",
+        title: (req.body as { title?: string }).title || "Без названия",
+        description: (req.body as { description?: string }).description || "",
         materialType: "UPLOAD",
         content: pdfData.text,
         publishedDate: new Date(),
@@ -97,7 +104,7 @@ class MaterialController {
       console.error("ДЕТАЛЬНАЯ ОШИБКА:", error);
       return res.status(500).json({
         message: "Ошибка обработки PDF",
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
       });
     }
   }

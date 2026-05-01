@@ -1,10 +1,17 @@
-import { User } from "../models/models.js";
+import type { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import { User } from "../models/models.js";
 
 class RegistrationController {
-  async register(req, res) {
+  async register(req: Request, res: Response) {
     try {
-      const { email, password, username, firstName, secondName } = req.body;
+      const { email, password, username, firstName, secondName } = req.body as {
+        email?: string;
+        password?: string;
+        username?: string;
+        firstName?: string;
+        secondName?: string;
+      };
 
       if (!email || !password || !username) {
         return res.status(400).json({ message: "Email, password and username are required" });
@@ -14,17 +21,14 @@ class RegistrationController {
         return res.status(400).json({ message: "Password must be at least 6 characters long" });
       }
 
-      // Check if user already exists
-      const existingUser = await User.findOne({ where: { email: email } });
+      const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
         return res.json({ message: "User with this email already exists" });
       }
 
-      // Hash password
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(password, salt);
 
-      // Create new user
       const newUser = await User.create({
         firstName,
         secondName,
@@ -33,7 +37,8 @@ class RegistrationController {
         password: hashedPassword,
       });
 
-      const { userPassword, ...safeUser } = newUser.dataValues
+      const { password: userPassword, ...safeUser } = newUser.dataValues;
+      void userPassword;
 
       return res.status(201).json({
         message: "User successfully registered",

@@ -1,7 +1,7 @@
-import express from 'express';
-import adminController from '../controllers/AdminController.js';
-import checkAdmin from '../middleware/checkAdmin.js';
-import authMiddleware from '../middleware/authMiddleware.js';
+import express from "express";
+import adminController from "../controllers/AdminController.js";
+import checkAdmin from "../middleware/checkAdmin.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 

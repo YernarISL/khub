@@ -6,10 +6,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/avatars");
   },
   filename: (req, file, cb) => {
-    cb(
-      null,
-      `user-${req.session.userId}${path.extname(file.originalname)}`
-    );
+    cb(null, `user-${req.session.userId}${path.extname(file.originalname)}`);
   },
 });
 

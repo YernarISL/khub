@@ -1,7 +1,8 @@
+import { Request, Response } from "express";
 import { User } from "../models/models.js";
 
 class UserController {
-  async getUserAuthInfo(req, res) {
+  async getUserAuthInfo(req: Request, res: Response) {
     const user = await User.findByPk(req.session.userId);
 
     if (!user) {
@@ -16,4 +17,5 @@ class UserController {
     });
   }
 }
+
 export default new UserController();
