@@ -478,13 +478,27 @@ const seedEventsData = async () => {
     }
 };
 
-const seedMLStudentFeatureData = async () => {
-    const usersRows = await client.query<{ id: number }>('SELECT id FROM users ORDER BY id');
+const seedStudentUserMapping = async () => {
+    const usersRows = await client.query<{ id: number }>('SELECT id FROM users ORDER BY id LIMIT 12');
+    const studentsRows = await client.query<{ id: number }>('SELECT id FROM lms_students ORDER BY id LIMIT 12');
     if (usersRows.rows.length === 0) {
-        throw new Error('Users are required before seeding ml features.');
+        throw new Error('At least one user is required to seed student_user_mapping.');
     }
-    const userIds = usersRows.rows.map((row) => row.id);
+    if (studentsRows.rows.length === 0) {
+        throw new Error('At least one LMS student is required to seed student_user_mapping.');
+    }
+    const pairCount = Math.min(usersRows.rows.length, studentsRows.rows.length);
+    const rows: [number, number][] = [];
+    for (let i = 0; i < pairCount; i++) {
+        rows.push([studentsRows.rows[i]!.id, usersRows.rows[i]!.id]);
+    }
+    await insertBatch(
+        'INSERT INTO student_user_mapping (student_id, user_id) VALUES',
+        rows
+    );
+};
 
+const seedMLStudentFeatureData = async () => {
     const enrollmentsRows = await client.query<{
         student_id: number;
         course_id: number;
@@ -519,7 +533,6 @@ const seedMLStudentFeatureData = async () => {
     type EnrollmentAgg = {
         enrollmentYear: number;
         teacherId: number;
-        userId: number;
         enrolledAt: Date;
         cutoffAt: Date;
         allEvents: EventRow[];
@@ -553,7 +566,6 @@ const seedMLStudentFeatureData = async () => {
 
     const courseFeatureRows: unknown[][] = [];
     const studentAggById = new Map<number, {
-        userId: number;
         enrollmentYear: number;
         totalCourses: number;
         completedCourses: number;
@@ -633,12 +645,9 @@ const seedMLStudentFeatureData = async () => {
         const avgScoreAll = scoresAll.length > 0 ? scoresAll.reduce((a, b) => a + b, 0) / scoresAll.length : null;
         const labelFault = avgScoreAll !== null && avgScoreAll < 60 ? 1 : 0;
 
-        const mappedUserId = userIds[(enrollment.student_id - 1) % userIds.length] ?? userIds[0]!;
-
         const enrollmentAgg: EnrollmentAgg = {
             enrollmentYear: enrollment.enrollment_year,
             teacherId: enrollment.teacher_id,
-            userId: mappedUserId,
             enrolledAt: enrollment.enrolled_at,
             cutoffAt,
             allEvents: sortedEvents,
@@ -660,7 +669,6 @@ const seedMLStudentFeatureData = async () => {
 
         courseFeatureRows.push([
             enrollment.student_id,
-            enrollmentAgg.userId,
             enrollment.course_id,
             enrollment.teacher_id,
             Number(enrollmentAgg.completionRate.toFixed(4)),
@@ -678,7 +686,6 @@ const seedMLStudentFeatureData = async () => {
         ]);
 
         const studentAgg = studentAggById.get(enrollment.student_id) ?? {
-            userId: enrollmentAgg.userId,
             enrollmentYear: enrollment.enrollment_year,
             totalCourses: 0,
             completedCourses: 0,
@@ -761,7 +768,6 @@ const seedMLStudentFeatureData = async () => {
 
         studentFeatureRows.push([
             studentId,
-            agg.userId,
             agg.enrollmentYear,
             agg.totalCourses,
             agg.completedCourses,
@@ -783,7 +789,7 @@ const seedMLStudentFeatureData = async () => {
     for (let i = 0; i < courseFeatureRows.length; i += courseBatchSize) {
         await insertBatch(
             `INSERT INTO ml_student_course_features (
-                student_id, user_id, course_id, teacher_id, completion_rate, is_completed, avg_score,
+                student_id, course_id, teacher_id, completion_rate, is_completed, avg_score,
                 score_trend, total_events, days_active_on_course, days_since_last_activity,
                 submission_count, late_submission_count, engagement_score, label_fault, refreshed_at
             ) VALUES`,
@@ -795,7 +801,7 @@ const seedMLStudentFeatureData = async () => {
     for (let i = 0; i < studentFeatureRows.length; i += studentBatchSize) {
         await insertBatch(
             `INSERT INTO ml_student_features (
-                student_id, user_id, enrollment_year, total_courses_enrolled, courses_completed,
+                student_id, enrollment_year, total_courses_enrolled, courses_completed,
                 courses_abandoned, avg_score_overall, score_trend, total_active_days,
                 days_since_last_activity, avg_weekly_events, avg_session_gap_days,
                 late_submission_rate, label_at_fault, label_dropout, refreshed_at
@@ -810,7 +816,7 @@ const run = async () => {
 
     try {
         await client.query(
-            'TRUNCATE TABLE ml_student_course_features, ml_student_features, lms_events, lms_enrollments, lms_courses, lms_students, lms_teachers RESTART IDENTITY CASCADE'
+            'TRUNCATE TABLE student_user_mapping, ml_student_course_features, ml_student_features, lms_events, lms_enrollments, lms_courses, lms_students, lms_teachers RESTART IDENTITY CASCADE'
         );
 
         await seedStudentsData();
@@ -818,6 +824,7 @@ const run = async () => {
         await seedCoursesData();
         await seedEnrollmentsData();
         await seedEventsData();
+        await seedStudentUserMapping();
         await seedMLStudentFeatureData();
     } finally {
         await client.end();

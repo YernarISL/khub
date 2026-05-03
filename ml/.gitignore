@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+
+# Локальное окружение внутри ml/
+.venv/
+venv/
+env/
+ENV/
+
+# Упаковка / колёса
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Тесты, типы, линтер
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Логи экспериментов (Weights & Biases, MLflow и т.п.)
+wandb/
+mlruns/
+
+# DVC кэш (если появится)
+.dvc/cache
+
+# Временные файлы
+*.tmp
+*.bak
+.DS_Store
+
+# Крупные выгрузки и модели — раскомментируйте, если не храните в Git
+# notebook/*.csv
+# notebook/ml_*.csv
+# models/*.pkl
+# models/*.joblib

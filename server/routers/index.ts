@@ -5,6 +5,7 @@ import loginRouter from './loginRoute.js';
 import adminRouter from './adminRoute.js';
 import avatarRouter from './avatarRoute.js';
 import AIRouter from './AISummarizeRoute.js';
+import mlRouter from './mlRoute.js';
 import searchController from '../controllers/SearchController.js';
 import materialController from '../controllers/MaterialController.js';
 import LoginController from '../controllers/LoginController.js';
@@ -56,6 +57,8 @@ router.get("/materials/:id", authMiddleware, materialController.getMaterialById)
 router.post("/material/upload-pdf", authMiddleware, upload.single("pdfFile"), materialController.createFromPdf);
 
 router.get("/search", authMiddleware, searchController.search);
+
+router.use("/ml", authMiddleware, mlRouter);
 
 router.use("/", authMiddleware, AIRouter);
 

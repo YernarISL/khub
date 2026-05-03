@@ -1,6 +1,5 @@
 import sequelize from "../../db.js";
 import { DataTypes } from "sequelize";
-import { User } from "../core/models.js";
 
 const MLStudentFeatures = sequelize.define(
   "MLStudentFeatures",
@@ -11,14 +10,6 @@ const MLStudentFeatures = sequelize.define(
       allowNull: false,
       references: {
         model: "lms_students",
-        key: "id",
-      },
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: User,
         key: "id",
       },
     },
