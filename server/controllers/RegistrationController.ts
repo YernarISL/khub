@@ -21,9 +21,14 @@ class RegistrationController {
         return res.status(400).json({ message: "Password must be at least 6 characters long" });
       }
 
-      const existingUser = await User.findOne({ where: { email } });
-      if (existingUser) {
-        return res.json({ message: "User with this email already exists" });
+      const existingUserByEmail = await User.findOne({ where: { email } });
+      if (existingUserByEmail) {
+        return res.status(409).json({ message: "User with this email already exists" });
+      }
+
+      const existingUserByUsername = await User.findOne({ where: { username } });
+      if (existingUserByUsername) {
+        return res.status(409).json({ message: "This username is already taken" });
       }
 
       const salt = await bcrypt.genSalt();

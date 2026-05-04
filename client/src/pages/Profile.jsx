@@ -2,7 +2,6 @@ import { logout } from "../services/userService";
 import { useAuthStore } from "../app/store";
 import { useNavigate } from "react-router-dom";
 import { uploadAvatar } from "../services/uploadAvatar";
-import Header from "../components/Header/Header";
 import "../styles/Profile.css";
 
 const Profile = () => {
@@ -25,7 +24,6 @@ const Profile = () => {
 
   return (
     <div className="profile-page-wrapper">
-      <Header />
       <div className="profile-page-container">
         {user.profileImage && (
           <img

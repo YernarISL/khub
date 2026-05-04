@@ -1,5 +1,6 @@
 import sequelize from "../../db.js";
 import { DataTypes } from "sequelize";
+import { ALL_ROLES, ROLES } from "../../constants/roles.js";
 
 const User = sequelize.define("user", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -8,7 +9,7 @@ const User = sequelize.define("user", {
   username: { type: DataTypes.STRING, unique: true, allowNull: false },
   email: { type: DataTypes.STRING, unique: true, allowNull: false },
   password: { type: DataTypes.STRING, allowNull: false },
-  role: { type: DataTypes.ENUM("USER", "ADMIN"), defaultValue: "USER" },
+  role: { type: DataTypes.ENUM(...ALL_ROLES), defaultValue: ROLES.USER },
   profileImage: { type: DataTypes.STRING, allowNull: true },
 });
 

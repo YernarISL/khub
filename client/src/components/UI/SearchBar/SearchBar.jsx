@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchStore } from "../../../app/store";
 import { useTranslation } from "react-i18next";
@@ -8,10 +8,7 @@ import "./SearchBar.css";
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const searchTerm = useSearchStore((state) => state.searchTerm);
   const setSearchTerm = useSearchStore((state) => state.setSearchTerm);
-
-  const setData = useSearchStore((state) => state.setData);
 
   const navigate = useNavigate();
 

@@ -1,111 +1,244 @@
-.header-wrapper {
-    background-color: #fff;
-    padding: 24px 72px;
-    outline: 1px solid #e5e5e5;
+/* Header — top app bar (Nexus-style), BEM-like `header-` prefix */
+
+.header-shell {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
 }
 
-.header-container {
+.header-inner {
+  display: flex;
+  max-width: 1280px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  min-height: 56px;
+  margin: 0 auto;
+  padding: 0 20px 12px;
+}
+
+.header-inner--loading {
+  justify-content: center;
+  min-height: 52px;
+}
+
+.header-loading {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.header-search {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  max-width: 640px;
+}
+
+.header-nav {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .header-nav {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+  }
 }
 
-.header-nav-bar {
+.header-nav-link {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #475569;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.header-nav-link:hover {
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+.header-nav-link--active {
+  color: #4f46e5;
+  background-color: #eef2ff;
+}
+
+.header-trailing {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .header-trailing {
+    gap: 10px;
+  }
+}
+
+.header-icon-btn {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  color: #475569;
+  cursor: pointer;
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.header-icon-btn:hover {
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+.header-user-block {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  max-width: 220px;
+  padding: 4px 8px 4px 4px;
+  border-radius: 14px;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+@media (min-width: 640px) {
+  .header-user-block {
     display: flex;
-    gap: 32px;
+  }
 }
 
-.header-nav-bar * {
-    color: #000;
+.header-user-block:hover {
+  background-color: #f8fafc;
 }
 
-.header-profile-section {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+.header-user-avatar {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1 0%, #5d5cff 100%);
 }
 
-.logo-in-header {
-    max-width: 250px;
+.header-user-avatar--photo {
+  padding: 0;
+  overflow: hidden;
+  background: #e2e8f0;
 }
 
-.header-sandbox-link {
-    background-color: #28a745;
-    padding: 8px 16px;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
+.header-user-avatar--photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.header-sandbox-link:hover {
-    background-color: #238a3b;
-    color: #fff;
+.header-user-meta {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
 }
 
-.header-uploadPdf-link {
-    background-color: #007bff;
-    padding: 8px 16px;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
+.header-user-name {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #0f172a;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.header-uploadPdf-link:hover {
-    background-color: #036cdc;
-    color: #fff;
+.header-user-role {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #64748b;
 }
 
-.header-profile-username {
-  color: #000;
-}
-
-.lang-select-wrapper {
+.header-lang {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
 }
 
-.globe-icon {
+.header-lang-globe {
   position: absolute;
   left: 10px;
-  width: 18px;
-  height: 18px;
-  pointer-events: none; 
-  fill: #555;
+  z-index: 1;
+  color: #64748b;
+  pointer-events: none;
 }
 
-.modern-select {
-  /* Убираем стандартный вид браузера */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  /* Стилизация */
-  padding: 8px 32px 8px 24px; /* Большой отступ слева для иконки */
-  font-size: 14px;
+.header-lang-select {
+  margin: 0;
+  padding: 8px 28px 8px 34px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.8125rem;
   font-weight: 600;
-  border: none;
-  border-radius: 12px; /* Тот самый Modern круглый вид */
-  background-color: white;
-  color: #374151;
+  line-height: 1.2;
+  color: #334155;
   cursor: pointer;
-  transition: all 0.2s ease;
+  background-color: #ffffff;
+  appearance: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.header-lang-select:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+}
+
+.header-lang-select:focus {
+  border-color: #818cf8;
   outline: none;
 }
 
-/* Эффект при наведении */
-.modern-select:hover {
-  border-color: #3b82f6; /* Цвет рамки при ховере */
-  background-color: #f9fafb;
+.header-lang::after {
+  content: "▾";
+  position: absolute;
+  right: 10px;
+  font-size: 10px;
+  color: #94a3b8;
+  pointer-events: none;
 }
 
-/* Добавляем свою маленькую стрелочку справа (опционально) */
-.lang-select-wrapper::after {
-  content: "▼";
-  font-size: 10px;
-  position: absolute;
-  right: 12px;
-  pointer-events: none;
-  color: #9ca3af;
+.header-user-block:hover .header-user-name {
+  color: #0f172a;
+}
+
+.header-user-block:hover .header-user-role {
+  color: #64748b;
 }

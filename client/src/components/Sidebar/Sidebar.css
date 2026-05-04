@@ -1,0 +1,130 @@
+/* Sidebar — left nav, BEM `sidebar-` prefix (docs/css_style_guidelines.md) */
+
+.sidebar {
+  position: relative;
+  z-index: 10;
+  display: none;
+  width: 256px;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 100vh;
+  border-right: 1px solid #e2e8f0;
+  background-color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex;
+  }
+}
+
+.sidebar-brand {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebar-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar-brand-link:hover {
+  opacity: 0.88;
+}
+
+.sidebar-brand-logo {
+  display: block;
+  max-height: 36px;
+  max-width: 120px;
+  width: auto;
+  object-fit: contain;
+}
+
+.sidebar-brand-text {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #5d5cff;
+}
+
+.sidebar-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar-section-label {
+  margin-bottom: 8px;
+  padding: 0 8px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: left;
+  color: #475569;
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.sidebar-link:hover {
+  color: #0f172a;
+  background-color: #f8fafc;
+}
+
+.sidebar-link--active {
+  color: #5d5cff;
+  background-color: rgba(93, 92, 255, 0.1);
+}
+
+.sidebar-link--active .sidebar-link-icon {
+  color: #5d5cff;
+}
+
+.sidebar-link-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: color 0.15s ease;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-top: 1px solid #f1f5f9;
+}

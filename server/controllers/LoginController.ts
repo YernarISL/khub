@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import { Op } from "sequelize";
 import { User } from "../models/models.js";
 
 class LoginController {
@@ -12,12 +13,14 @@ class LoginController {
 
       if (!username || !password) {
         return res
-          .status(401)
-          .json({ message: "Username or password not present" });
+          .status(400)
+          .json({ message: "Username/email and password are required" });
       }
 
       const user = await User.findOne({
-        where: { username },
+        where: {
+          [Op.or]: [{ username }, { email: username }],
+        },
       });
 
       if (!user) {

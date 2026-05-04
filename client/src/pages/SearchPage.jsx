@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSearchStore } from "../app/store";
-import Header from "../components/Header/Header";
 import MaterialCard from "../components/MaterialCard/MaterialCard";
 import "../styles/SearchPage.css";
 
@@ -21,7 +20,6 @@ const SearchPage = () => {
 
   return (
     <div className="search-page-wrapper">
-       <Header />
       <div className="search-container">
        
         <h1>Search in KHub</h1>

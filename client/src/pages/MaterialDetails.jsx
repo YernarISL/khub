@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { host } from "../services";
 import { fetchMaterialSummary } from "../services/materialService";
-import Header from "../components/Header/Header";
 import "../styles/MaterialDetails.css";
 
 const MaterialDetails = () => {
@@ -117,8 +116,6 @@ const MaterialDetails = () => {
 
   return (
     <div>
-      <Header />
-
       <div className="material-details">
         {/* Хлебные крошки */}
         <div className="breadcrumbs">

@@ -4,11 +4,11 @@ import { useAuthStore } from "./store";
 import { getCurrentUser } from "../services/userService";
 import Registration from "../pages/Registration";
 import Login from "../pages/Login";
-import Home from "../pages/Home";
+import Home from "../features/home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Profile from "../pages/Profile";
 import MaterialDetails from "../pages/MaterialDetails";
-import MaterialEditor from "../pages/MaterialEditor";
+import SandboxPage from "../features/sandbox/SandboxPage";
 import UploadPdfPage from "../pages/UploadPdfPage";
 import Intro from "../pages/Intro";
 import SearchPage from "../pages/SearchPage";
@@ -17,6 +17,11 @@ import AdminMaterials from "../components/Admin/AdminMaterials/AdminMaterials";
 import AdminUsers from "../components/Admin/AdminUsers/AdminUsers";
 import AdminRoute from "./AdminRoute";
 import UsersMaterials from "../pages/UsersMaterials";
+import MainLayout from "../components/MainLayout/MainLayout";
+import AnalyticsPage from "../pages/AnalyticsPage";
+import RoleRoute from "./RoleRoute";
+import { ROLES } from "../shared/constants/roles";
+import TeacherDashboard from "../pages/TeacherDashboard";
 import "./App.css";
 
 function App() {
@@ -31,7 +36,7 @@ function App() {
       .catch(() => {
         clearAuth();
       });
-  }, []);
+  }, [clearAuth, setAuth]);
 
   return (
     <BrowserRouter>
@@ -41,13 +46,23 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route element={<ProtectedRoute />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/sandbox" element={<MaterialEditor />} />
-          <Route path="/myworks" element={<UsersMaterials />} />
-          <Route path="/upload-pdf" element={<UploadPdfPage />} />
-          <Route path="/materials/:id" element={<MaterialDetails />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route element={<MainLayout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/sandbox" element={<SandboxPage />} />
+            <Route path="/myworks" element={<UsersMaterials />} />
+            <Route path="/upload-pdf" element={<UploadPdfPage />} />
+            <Route path="/materials/:id" element={<MaterialDetails />} />
+            <Route path="/search" element={<SearchPage />} />
+
+            <Route element={<RoleRoute allowedRoles={[ROLES.MANAGER]} />}>
+              <Route path="/analytics" element={<AnalyticsPage />} />
+            </Route>
+
+            <Route element={<RoleRoute allowedRoles={[ROLES.TEACHER]} />}>
+              <Route path="/teacher" element={<TeacherDashboard />} />
+            </Route>
+          </Route>
         </Route>
 
         <Route element={<AdminRoute />}>

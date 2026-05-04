@@ -1,15 +1,7 @@
 import React from "react";
-import { useAuthStore } from "./store";
-import { Outlet, Navigate } from "react-router-dom";
+import RoleRoute from "./RoleRoute";
+import { ROLES } from "../shared/constants/roles";
 
-const AdminRoute = () => {
-  const user = useAuthStore((state) => state.user);
-
-  if (user.role !== "ADMIN") {
-    return <Navigate to="/" replace />;
-  }
-
-  return <Outlet />;
-};
+const AdminRoute = () => <RoleRoute allowedRoles={[ROLES.ADMIN]} />;
 
 export default AdminRoute;
