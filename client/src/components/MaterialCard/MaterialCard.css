@@ -1,27 +1,127 @@
-.material-card-container {
-    background-color: #fff;
-    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    padding: 24px 32px 32px;
-}
-
-.material-card-title {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.material-card-buttons {
+.materials-card {
     display: flex;
-    gap: 32px;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 220px;
+    padding: 20px;
+    color: #111827;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.material-card-secondary-container {
+.materials-card:hover {
+    transform: translateY(-2px);
+    border-color: #d1d5db;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+.materials-card:focus-visible {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.materials-card-grid .materials-card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+}
+
+.materials-card-list {
+    min-height: 0;
+}
+
+.materials-card-top {
     display: flex;
     align-items: center;
-    gap: 32px;
-    margin: 32px 0 24px;
+    justify-content: space-between;
+    gap: 12px;
 }
 
-.material-card-categories {
-    margin: 16px 0 48px;
+.materials-card-badge,
+.materials-card-type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+.materials-card-badge {
+    color: #1d4ed8;
+    background: #eff6ff;
+}
+
+.materials-card-type {
+    color: #374151;
+    background: #f3f4f6;
+}
+
+.materials-card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.materials-card-description {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.materials-card-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.materials-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.materials-card-primary-btn,
+.materials-card-secondary-btn {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.materials-card-primary-btn {
+    color: #ffffff;
+    background: #2563eb;
+}
+
+.materials-card-primary-btn:hover {
+    background: #1d4ed8;
+}
+
+.materials-card-secondary-btn {
+    color: #334155;
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.materials-card-secondary-btn:hover {
+    background: #eef2ff;
+    border-color: #c7d2fe;
 }

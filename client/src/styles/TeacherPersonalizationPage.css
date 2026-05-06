@@ -1,0 +1,37 @@
+.teacher-personalization-page {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.teacher-personalization-page p,
+.teacher-personalization-status {
+  color: #64748b;
+}
+
+.teacher-personalization-form {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.teacher-personalization-form input,
+.teacher-personalization-form textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 9px;
+}
+
+.teacher-personalization-form button {
+  align-self: flex-start;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+}

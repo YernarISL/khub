@@ -1,0 +1,52 @@
+.student-assistant-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.student-assistant-status {
+  margin: 12px 0;
+}
+
+.student-assistant-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.student-assistant-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.student-assistant-form select,
+.student-assistant-form input,
+.student-assistant-form textarea {
+  width: 100%;
+  border: 1px solid #d6d9df;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.student-assistant-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.student-assistant-form button {
+  width: fit-content;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  background: #335eea;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.student-assistant-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

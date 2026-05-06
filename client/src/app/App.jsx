@@ -19,9 +19,14 @@ import AdminRoute from "./AdminRoute";
 import UsersMaterials from "../pages/UsersMaterials";
 import MainLayout from "../components/MainLayout/MainLayout";
 import AnalyticsPage from "../pages/AnalyticsPage";
+import IdentityRequestsPage from "../pages/IdentityRequestsPage";
 import RoleRoute from "./RoleRoute";
 import { ROLES } from "../shared/constants/roles";
 import TeacherDashboard from "../pages/TeacherDashboard";
+import TeacherDialoguesPage from "../pages/TeacherDialoguesPage";
+import TeacherPersonalizationPage from "../pages/TeacherPersonalizationPage";
+import StudentAssistantPage from "../pages/StudentAssistantPage";
+import StudentDialoguesPage from "../pages/StudentDialoguesPage";
 import "./App.css";
 
 function App() {
@@ -57,10 +62,18 @@ function App() {
 
             <Route element={<RoleRoute allowedRoles={[ROLES.MANAGER]} />}>
               <Route path="/analytics" element={<AnalyticsPage />} />
+              <Route path="/identity-requests" element={<IdentityRequestsPage />} />
             </Route>
 
             <Route element={<RoleRoute allowedRoles={[ROLES.TEACHER]} />}>
               <Route path="/teacher" element={<TeacherDashboard />} />
+              <Route path="/teacher/dialogues" element={<TeacherDialoguesPage />} />
+              <Route path="/teacher/personalization" element={<TeacherPersonalizationPage />} />
+            </Route>
+
+            <Route element={<RoleRoute allowedRoles={[ROLES.STUDENT]} />}>
+              <Route path="/student/assistant" element={<StudentAssistantPage />} />
+              <Route path="/student/dialogues" element={<StudentDialoguesPage />} />
             </Route>
           </Route>
         </Route>

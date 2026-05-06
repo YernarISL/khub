@@ -1,4 +1,13 @@
-export { User, Material } from "./core/models.js";
+export {
+  User,
+  Material,
+  RoleChangeRequest,
+  TeacherStudentDialogue,
+  DialogueMessage,
+  DialogueAttachment,
+  AIFeedbackDraft,
+  StudentPersonalization,
+} from "./core/models.js";
 export {
   LMSStudent,
   LMSTeacher,

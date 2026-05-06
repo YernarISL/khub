@@ -1,0 +1,151 @@
+.identity-requests-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.identity-requests-page-headline {
+  margin-bottom: 20px;
+}
+
+.identity-requests-page-title {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0f172a;
+}
+
+.identity-requests-page-lead {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+.identity-requests-filter-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+}
+
+.identity-requests-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.identity-requests-filter select {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #d5ddec;
+  border-radius: 12px;
+}
+
+.identity-requests-message {
+  margin-bottom: 12px;
+  color: #334155;
+  font-size: 14px;
+}
+
+.identity-requests-card {
+  background: #fff;
+  border: 1px solid #e6ebf5;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.identity-requests-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.identity-requests-table th,
+.identity-requests-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eef2f8;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.identity-requests-table th {
+  color: #334155;
+  background: #f8faff;
+}
+
+.identity-requests-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.identity-requests-status--pending {
+  color: #9a6700;
+  background: #fff5d6;
+}
+
+.identity-requests-status--approved {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.identity-requests-status--rejected {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.identity-requests-status--cancelled {
+  color: #334155;
+  background: #e2e8f0;
+}
+
+.identity-requests-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.identity-requests-actions textarea {
+  min-height: 76px;
+  padding: 10px;
+  border: 1px solid #d5ddec;
+  border-radius: 10px;
+  resize: vertical;
+}
+
+.identity-requests-actions-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.identity-requests-actions-buttons button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid #d5ddec;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.identity-requests-actions-buttons button:first-child {
+  color: #fff;
+  background: #356dff;
+  border-color: #356dff;
+}
+
+.identity-requests-actions-buttons .identity-requests-btn-danger {
+  color: #991b1b;
+  border-color: #fecaca;
+  background: #fff;
+}
+
+.identity-requests-empty {
+  padding: 20px;
+  color: #64748b;
+}

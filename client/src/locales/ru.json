@@ -65,7 +65,10 @@
     "home": "Главная",
     "knowledgeHub": "База знаний",
     "analytics": "Аналитика",
+    "identityRequests": "Identity Requests",
     "teacherCabinet": "Кабинет преподавателя",
+    "dialogues": "Диалоги",
+    "studentAssistant": "Задания",
     "aiAgent": "ИИ-агент",
     "templates": "Шаблоны",
     "settings": "Настройки",
@@ -101,5 +104,29 @@
     "savedLocal": "Сохранено локально.",
     "loadConfirm": "Загрузить «{{title}}»?",
     "exportWindowTitle": "Экспорт"
+  },
+  "studentAssistant": {
+    "title": "Ассистент преподавателя",
+    "subtitle": "Выберите курс и задание, затем загрузите PDF, чтобы сразу создать AI-черновик обратной связи.",
+    "courseLabel": "Курс",
+    "coursePlaceholder": "Выберите курс",
+    "assignmentLabel": "Задание",
+    "assignmentPlaceholder": "Выберите задание",
+    "fileLabel": "PDF файл",
+    "noteLabel": "Комментарий для преподавателя (опционально)",
+    "notePlaceholder": "Контекст к отправке",
+    "submit": "Загрузить и сгенерировать черновик",
+    "submitting": "Загрузка...",
+    "status": {
+      "uploaded": "PDF успешно загружен.",
+      "uploadedAndDraftReady": "PDF загружен, AI-черновик готов для ревью преподавателем.",
+      "uploadedWithDraftError": "PDF загружен, но AI-черновик не сгенерирован. Преподаватель сможет запустить генерацию вручную."
+    },
+    "errors": {
+      "required": "Выберите курс и задание, затем добавьте текст и/или PDF.",
+      "loadCourses": "Не удалось загрузить курсы.",
+      "loadAssignments": "Не удалось загрузить задания.",
+      "upload": "Не удалось отправить задание."
+    }
   }
 }

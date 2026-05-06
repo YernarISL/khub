@@ -8,6 +8,7 @@ import {
   FiLayers,
   FiMessageSquare,
   FiSettings,
+  FiUserCheck,
 } from "react-icons/fi";
 import logo from "../../assets/logo.png";
 import { useAuthStore } from "../../app/store";
@@ -31,11 +32,26 @@ function pathMatches(pathname, href) {
   if (href === "/analytics") {
     return pathname.startsWith("/analytics");
   }
+  if (href === "/identity-requests") {
+    return pathname.startsWith("/identity-requests");
+  }
   if (href === "/sandbox") {
     return pathname.startsWith("/sandbox");
   }
   if (href === "/teacher") {
     return pathname.startsWith("/teacher");
+  }
+  if (href === "/teacher/dialogues") {
+    return pathname.startsWith("/teacher/dialogues");
+  }
+  if (href === "/teacher/personalization") {
+    return pathname.startsWith("/teacher/personalization");
+  }
+  if (href === "/student/assistant") {
+    return pathname.startsWith("/student/assistant");
+  }
+  if (href === "/student/dialogues") {
+    return pathname.startsWith("/student/dialogues");
   }
   return false;
 }
@@ -49,10 +65,23 @@ export default function Sidebar() {
     { to: "/home", label: t("sidebar.home"), Icon: FiHome },
     { to: "/myworks", label: t("sidebar.knowledgeHub"), Icon: FiBookOpen },
     ...(user?.role === ROLES.MANAGER
-      ? [{ to: "/analytics", label: t("sidebar.analytics"), Icon: FiBarChart2 }]
+      ? [
+          { to: "/analytics", label: t("sidebar.analytics"), Icon: FiBarChart2 },
+          { to: "/identity-requests", label: t("sidebar.identityRequests"), Icon: FiUserCheck },
+        ]
       : []),
     ...(user?.role === ROLES.TEACHER
-      ? [{ to: "/teacher", label: t("sidebar.teacherCabinet"), Icon: FiBarChart2 }]
+      ? [
+          { to: "/teacher/dialogues", label: "Dialogues", Icon: FiMessageSquare },
+          { to: "/teacher/personalization", label: "Personalization", Icon: FiUserCheck },
+          { to: "/teacher", label: t("sidebar.teacherCabinet"), Icon: FiBarChart2 },
+        ]
+      : []),
+    ...(user?.role === ROLES.STUDENT
+      ? [
+          { to: "/student/dialogues", label: t("sidebar.dialogues"), Icon: FiMessageSquare },
+          { to: "/student/assistant", label: t("sidebar.studentAssistant"), Icon: FiUserCheck },
+        ]
       : []),
     { to: "/sandbox", label: t("sidebar.aiAgent"), Icon: FiMessageSquare },
   ];

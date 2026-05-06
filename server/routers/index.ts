@@ -3,8 +3,9 @@ import multer from 'multer';
 import registrationRouter from './registrationRoute.js';
 import loginRouter from './loginRoute.js';
 import adminRouter from './adminRoute.js';
+import roleRequestRouter from './roleRequestRoute.js';
+import teacherDialoguesRouter from "./teacherDialoguesRoute.js";
 import avatarRouter from './avatarRoute.js';
-import AIRouter from './AISummarizeRoute.js';
 import mlRouter from './mlRoute.js';
 import searchController from '../controllers/SearchController.js';
 import materialController from '../controllers/MaterialController.js';
@@ -20,6 +21,8 @@ router.use('/registration', registrationRouter)
 router.use('/login', loginRouter)
 
 router.use('/admin', adminRouter)
+router.use('/role-requests', roleRequestRouter)
+router.use("/teacher-workflow", teacherDialoguesRouter)
 
 router.use('/profile', avatarRouter)
 
@@ -59,7 +62,5 @@ router.post("/material/upload-pdf", authMiddleware, upload.single("pdfFile"), ma
 router.get("/search", authMiddleware, searchController.search);
 
 router.use("/ml", authMiddleware, mlRouter);
-
-router.use("/", authMiddleware, AIRouter);
 
 export default router;

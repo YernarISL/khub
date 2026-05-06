@@ -65,7 +65,10 @@
     "home": "Home",
     "knowledgeHub": "Knowledge Hub",
     "analytics": "Analytics",
+    "identityRequests": "Identity Requests",
     "teacherCabinet": "Teacher cabinet",
+    "dialogues": "Dialogues",
+    "studentAssistant": "Assignments",
     "aiAgent": "AI Agent",
     "templates": "Templates",
     "settings": "Settings",
@@ -101,5 +104,29 @@
     "savedLocal": "Saved locally.",
     "loadConfirm": "Load \"{{title}}\"?",
     "exportWindowTitle": "Export"
+  },
+  "studentAssistant": {
+    "title": "Teacher Assistant",
+    "subtitle": "Choose a course and assignment, then upload your PDF submission for instant AI draft feedback.",
+    "courseLabel": "Course",
+    "coursePlaceholder": "Select a course",
+    "assignmentLabel": "Assignment",
+    "assignmentPlaceholder": "Select an assignment",
+    "fileLabel": "PDF file",
+    "noteLabel": "Comment for teacher (optional)",
+    "notePlaceholder": "Any context for this submission",
+    "submit": "Upload and generate draft",
+    "submitting": "Uploading...",
+    "status": {
+      "uploaded": "PDF uploaded successfully.",
+      "uploadedAndDraftReady": "PDF uploaded and AI draft is ready for teacher review.",
+      "uploadedWithDraftError": "PDF uploaded, but AI draft generation failed. Teacher can regenerate manually."
+    },
+    "errors": {
+      "required": "Please select course and assignment, then provide text and/or PDF.",
+      "loadCourses": "Failed to load courses.",
+      "loadAssignments": "Failed to load assignments.",
+      "upload": "Failed to upload assignment."
+    }
   }
 }

@@ -30,8 +30,36 @@ router.delete(
 router.patch(
   "/users/:id/role",
   authMiddleware,
-  requireRoles(ROLES.ADMIN, ROLES.MANAGER),
+  requireRoles(ROLES.ADMIN),
   adminController.updateUserRole,
+);
+
+router.get(
+  "/role-requests",
+  authMiddleware,
+  requireRoles(ROLES.MANAGER, ROLES.ADMIN),
+  adminController.getRoleRequests,
+);
+
+router.patch(
+  "/role-requests/:id/approve",
+  authMiddleware,
+  requireRoles(ROLES.MANAGER, ROLES.ADMIN),
+  adminController.approveRoleRequest,
+);
+
+router.patch(
+  "/role-requests/:id/reject",
+  authMiddleware,
+  requireRoles(ROLES.MANAGER, ROLES.ADMIN),
+  adminController.rejectRoleRequest,
+);
+
+router.get(
+  "/analytics/overview",
+  authMiddleware,
+  requireRoles(ROLES.MANAGER, ROLES.ADMIN),
+  adminController.getAnalyticsOverview,
 );
 
 export default router;
